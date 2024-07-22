@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1 class="text-center ">Manage Employees</h1>
+    <h2 class="text-center">List of all Employees</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>SR.No</th>
+                                    <th>Name</th>
+                                    <th>Emp ID</th>
+                                    <th>PhoneNO</th>
+                                    <th>Working</th>
+                                    <th>department</th>
+                                    <th>Address</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for e in emps %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{e.name}}</td>
+                                    <td>{{e.emp_id}}</td>
+                                    <td>{{e.phone}}</td>
+                                    <td>{{e.working}}</td>
+                                    <td>{{e.department}}</td>
+                                    <td>{{e.address}}</td>
+                                    <td>
+                                        <a href="/emp/delete-emp/{{e.id}}" class="btn-danger btn-sm">Delete</a>
+                                        <a href="/emp/update-emp/{{e.id}}" class="btn-success btn-sm">Update</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

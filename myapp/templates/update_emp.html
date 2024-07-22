@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update emp</title>
+</head>
+<body>
+    {%include 'navbar.html'%}
+    <h1 class="text-center my-2">Update employee</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/emp/do-update-emp/{{emp.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="mb-3">
+                                <label for="">Employee name</label>
+                                <input type="text" id="name" name="emp_name" class="form-control" placeholder="enter employee name" value="{{emp.name}}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="">Employee ID</label>
+                                <input type="text" id="id"name="emp_id" class="form-control" placeholder="enter employee ID" value="{{emp.emp_id}}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="">Employee PhoneNO</label>
+                                <input type="text" name="emp_phone" id="phone" class="form-control" placeholder="enter employee PhoneNO" value="{{emp.phone}}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="">Employee Address</label>
+                                <textarea name="emp_address" id="address"  rows="3" class="form-control">{{emp.address}}</textarea>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" {% if emp.working %} checked {% endif %}="emp_working" class="form-check-input">
+                                <label for="working" class="form-check-label">working </label>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="">Employee department</label>
+                                <select value="{{emp.department}}" id="department" name="emp_department" class="form-control">
+                                    <option value="CSE">Computer Science</option>
+                                    <option value="EH">Ethical hacker</option>
+                                    <option value="DS">Data Scientist</option>
+                                </select>
+                            </div>
+                            
+                            <div class="container text-center">
+                                <button class="btn"> Update Employee</button>
+                                
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
